@@ -26,7 +26,7 @@
 
 Disable-HPERedfishCertificateAuthentication
 
-$OUTPUTDIR = "{0}\reports" -f $PSScriptRoot
+$OUTPUTDIR = "{0}" -f $PSScriptRoot
 
 $HPEOVREPORTCSVOPTIONS = @{
 	"NoTypeInformation" = $true
@@ -34,13 +34,10 @@ $HPEOVREPORTCSVOPTIONS = @{
 	"Encoding" = "UTF8"
 } 
 
-$platform="bg"
-
-"Connected to {0}" -f $platform | Write-Host -ForegroundColor Green
 
 $report=[System.Collections.ArrayList]::new()
 
-$reportFile = "hpe_{0}_memory_{1}.csv" -f $platform, (Get-date -Format "yyyyMMdd-HHmmss")
+$reportFile = "hpe_memory_{0}.csv" -f (Get-date -Format "yyyyMMdd-HHmmss")
 $recordProperties = [Ordered]@{
 	"OneView" = $null
 	"Server" = $null
